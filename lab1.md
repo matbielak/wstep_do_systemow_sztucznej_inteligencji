@@ -34,8 +34,8 @@ Problemem takich systemow jest mowa, ktora jest nienaturalna - brakuje prawidlow
 W zwiazku z tym nie biore pod uwage jezyka mowionego.
 
 * rozmowa towarzyska
-* dyskusja polityczna
-* dyskusja naukowa
+* dyskusja polityczna - tak, dyskusje polityczne w internecie czesto oparte sa na emocjach, a nie faktach, wiec wyzywanie osoby o odmiennych poglądach "załatwi" sprawę
+* dyskusja naukowa - tak, system moze miec dostep do wszelkich badań i wykorzystywac je do prowadzenia dyskusji
 * odpowiedzi na pytania klientow w telefonicznej infolinii - nie, ze wzgledu na nienaturalnosc glosu
 * odpowiedzi na pytania klientow w internetowej infolinii - tak, jesli bedziemy odpowiadac na temat powiazany z usługą
 Skuteczna imitacja może zależeć od obeznania człowieka z technologią.
