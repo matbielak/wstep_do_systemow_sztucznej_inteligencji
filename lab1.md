@@ -6,14 +6,14 @@ Zadania wymagajace inteligencji czlowieka:
 * tlumaczenie tekstu - NIE - 
 * odpowiadanie na proste pytania zadawane w języku naturalnym (np. polskim)
 * komponowanie muzyki - TAK, prosty program bedzie w stanie stworzyc jakas muzyke, 
-* programowanie
+* programowanie - TAK, programowanie wymaga pewnego rodzaju myslenia abstrakcyjnego
 * kierowanie samochodem - TAK
 
 # Zadanie 2
 Problemy mieszczace sie w zakresie sztucznej inteligencji:
 * tłumaczenie tekstu - TAK, bo tłumaczenie nie jest prostym zamienianiem słów na postawie słownika
 * klasyfikacja tekstu do kategorii tematycznych - TAK, nie jestesmy w stanie prostym programem wywnioskowac kategorie tekstu
-* rozwiązywanie układów równań
+* rozwiązywanie układów równań - TAK
 * kierowanie samochodem - TAK
 * streszczenie tekstu - TAK
 * odpowiadanie na proste pytania zadawane w języku naturalnym - TAK, jesli odpowiedzi mają mieć sens
