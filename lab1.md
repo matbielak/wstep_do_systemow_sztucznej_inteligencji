@@ -1,13 +1,13 @@
 # Zadanie 1
-Inteligencja: 
+Moja definicja inteligencji: umiejętność rozwiązywania problemów, których nie da się rozwiązać prostym algorytmem.
 Zadania wymagajace inteligencji czlowieka:
 * wypelnanie deklaracji PIT - NIE, posiadając dane program bedzie w stanie wypelnic deklaracje
 * streszczenie tekstu - TAK, wykonanie dobrego streszczenia jest zadaniem trudnym dla czlowieka, prosty program nie bedzie w stanie takiego stworzyc 
-* tlumaczenie tekstu - NIE - 
-* odpowiadanie na proste pytania zadawane w języku naturalnym (np. polskim)
+* tlumaczenie tekstu - TAK, tak samo jak streszczenie, tłumaczenie nie jest prostym przekładem słów z jednego języka na drugi.  
+* odpowiadanie na proste pytania zadawane w języku naturalnym (np. polskim) - TAK, jeśli chcemy żeby odpowiedzi były sensowne, pytań może być nieskończenie wiele, nie będziemy mogli stworzyć takiego programu, który udziela odpowiedzi na podstawie jakiegoś klucza.
 * komponowanie muzyki - TAK, prosty program bedzie w stanie stworzyc jakas muzyke, 
 * programowanie - TAK, programowanie wymaga pewnego rodzaju myslenia abstrakcyjnego
-* kierowanie samochodem - TAK
+* kierowanie samochodem - TAK, sytuacja na drodze zmienia się w każdej sekundzie, musimy się do niej na bieżąco dostosowywać.
 
 # Zadanie 2
 Problemy mieszczace sie w zakresie sztucznej inteligencji:
@@ -15,7 +15,7 @@ Problemy mieszczace sie w zakresie sztucznej inteligencji:
 * klasyfikacja tekstu do kategorii tematycznych - TAK, nie jestesmy w stanie prostym programem wywnioskowac kategorie tekstu
 * rozwiązywanie układów równań - TAK
 * kierowanie samochodem - TAK
-* streszczenie tekstu - TAK
+* streszczenie tekstu - TAK, żeby wydobyć głębszy sens tekstu
 * odpowiadanie na proste pytania zadawane w języku naturalnym - TAK, jesli odpowiedzi mają mieć sens
 * układanie rozkładu jazdy - rozklad jazdy moze byc stworzony przez zwykly program
 * rozwiązywanie układów równań liniowych - NIE
