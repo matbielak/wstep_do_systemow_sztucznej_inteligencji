@@ -33,5 +33,11 @@ corka(X,Y) :-
     kobieta(X),
     (matka(Y,X);
     ojciec(Y,X)).
-    
+
+brat_rodzony(X,Y, O,M) :-
+    mezczyzna(X),
+    ojciec(O,X),
+    ojciec(O,Y),
+    matka(M,X),
+    matka(M,Y).
    
