@@ -23,4 +23,15 @@ ojciec(X,Y) :-
     osoba(Y),
     mezczyzna(X),
     rodzic(X,Y).
+
+matka(X,Y) :- 
+    osoba(Y),
+    kobieta(X),
+    rodzic(X,Y).
+
+corka(X,Y) :-
+    kobieta(X),
+    (matka(Y,X);
+    ojciec(Y,X)).
+    
    
