@@ -28,3 +28,14 @@ x3 = len(data[data[:,0] == 3].T)
 
 x = np.array([x1,x2,x3])
 plt.pie(x,labels=["1","2","3"])
+
+
+x = 8
+y = 3
+plt.scatter(range(len(data.T[x])),data.T[x],color="red")
+plt.scatter(range(len(data.T[y])),data.T[y],color="blue")
+plt.xlabel('X-axis')
+plt.ylabel('Y-axis')
+plt.title('Scatter Plot')
+plt.grid(True)
+plt.show()
