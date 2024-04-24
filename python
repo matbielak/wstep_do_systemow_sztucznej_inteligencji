@@ -1,0 +1,2 @@
+l = np.array([3*np.random.randn()+1 for _ in range(10000)])
+plt.hist(l)
