@@ -1,2 +1,24 @@
 l = np.array([3*np.random.randn()+1 for _ in range(10000)])
 plt.hist(l)
+
+
+data = np.loadtxt("wine.txt",dtype=float,delimiter=",")
+mins = [var.min() for var in data.T]
+maxs = [var.max() for var in data.T]
+means = [var.mean() for var in data.T]
+meds = [stat.median(var) for var in data.T]
+stdevs = [stat.stdev(var) for var in data.T]
+
+
+filtered_data = data[data[:,0] == 1].T
+filtered_data = np.delete(filtered_data,0,0)
+mean_vals = [i.mean() for i in filtered_data]
+print(mean_vals)
+
+plt.hist(data.T[1,:])
+
+plt.hist(data[data[:,0] == 1].T[1,:],color="r")
+plt.hist(data[data[:,0] == 2].T[1,:],color="b")
+plt.hist(data[data[:,0] == 3].T[1,:],color="y")
+
+
