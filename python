@@ -22,3 +22,9 @@ plt.hist(data[data[:,0] == 2].T[1,:],color="b")
 plt.hist(data[data[:,0] == 3].T[1,:],color="y")
 
 
+x1 = len(data[data[:,0] == 1].T)
+x2 = len(data[data[:,0] == 2].T)
+x3 = len(data[data[:,0] == 3].T)
+
+x = np.array([x1,x2,x3])
+plt.pie(x,labels=["1","2","3"])
