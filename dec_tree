@@ -1,0 +1,110 @@
+import numpy as np
+class Node:
+    def __init__(self, feature=None,threshold=None,left=None,right=None,*,value=None):
+        self.feature = feature
+        self.threshold = threshold
+        self.left = left
+        self.right = right
+        self.value = value
+
+    def is_leaf_node(self):
+        return self.value is not None
+
+class DecisionTree:
+    def __init__(self,min_samples_split=2,max_depth=100,n_features=None):
+        self.min_samples_split = min_samples_split
+        self.max_depth = max_depth
+        self.n_features = n_features
+        self.root = None
+
+    def fit(self,X,y):
+        self.root = self._grow_tree(X=X,y=y,depth=0)
+        print(self.root.threshold)
+        print(self.root.right.value)
+        
+
+    def _grow_tree(self,X,y,depth=0):
+        if len(np.unique(y)) == 1 or depth >= self.max_depth:
+            return Node(value = y[0])
+        thresh, feat,l,r = self._best_split(X,y,range(len(X[0])))
+        if thresh is None:
+            return Node(value=None)  
+        left = self._grow_tree(X[l],y[l],depth+1)
+        right = self._grow_tree(X[r],y[r],depth+1)
+        #left = self._grow_tree(np.delete(X[l].T, feat, 0).T,y[l],depth+1) ## co przekazujemy ???
+        #right = self._grow_tree(np.delete(X[r].T, feat, 0).T,y[r],depth+1)
+        return Node(feature=feat,threshold=thresh,left=left,right=right,value=None)
+        
+            
+
+    def _best_split(self,X,y,feat_idxs):
+        max_gain = 0
+        max_thresh = None
+        max_feat = None
+        max_left = None
+        max_right = None
+        for feat in feat_idxs:
+            if X.T[feat][0] is not None:
+                for val in X.T[feat]:
+                    ig,left,right =  self._information_gain(y,X.T[feat],val)
+                    if ig > max_gain:
+                        max_gain = ig
+                        max_thresh = val
+                        max_feat = feat
+                        max_left = left
+                        max_right = right
+
+      
+        return max_thresh,max_feat,max_left,max_right
+     
+        # szukamy najlepszego podzialu, wykorzystamy funkcje _information_gain
+        #wybierzemy taki feature(petal_width itp.) dla którego zwroci najwieksza wartosc
+        
+
+    def _information_gain(self,y,X_column,threshold):
+        current_ent = self._entropy(y)
+        left,right = self._split(X_column,threshold)
+        left_ent = self._entropy(y[left])
+        right_ent = self._entropy(y[right])
+        p = len(left[left == True])
+        return current_ent - p * left_ent - (1-p) * right_ent,left,right
+
+    def _split(self,X_column,split_thresh):
+        left = X_column <= split_thresh
+        right = X_column > split_thresh
+        return  left,right
+
+    def _entropy(self,y):
+        hist = np.bincount(y)
+        ps = hist / len(y)
+        return -np.sum([p + np.log(p) for p in ps if p>0])
+
+    def _traverse_tree(self,x,node):
+        if node.is_leaf_node() == True:
+            return node.value
+        thresh = node.threshold
+        if x[node.feature] <= thresh:
+            return self._traverse_tree(x,node.left)
+        else:
+            return self._traverse_tree(x,node.right)
+        
+
+    def predict(self,X):
+        return np.array([self._traverse_tree(x,self.root) for x in X])
+
+
+from sklearn import datasets
+from sklearn.model_selection import train_test_split
+
+data = datasets.load_iris()
+X, y = data.data, data.target
+X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.2,random_state=1234)
+clf = DecisionTree(max_depth=10)
+clf.fit(X_train,y_train)
+predictions = clf.predict(X_test)
+
+def accuracy(y_test,y_pred):
+    return np.sum(y_test == y_pred) / len(y_test)
+
+acc = accuracy(y_test,predictions)
+print(acc)
