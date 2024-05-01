@@ -26,9 +26,9 @@ class DecisionTree:
     def _grow_tree(self,X,y,depth=0):
         if len(np.unique(y)) == 1 or depth >= self.max_depth:
             return Node(value = y[0])
-        thresh, feat,l,r = self._best_split(X,y,range(len(X[0])))
-        if thresh is None:
-            return Node(value=None)  
+        thresh, feat,l,r,ig = self._best_split(X,y,range(len(X[0])))
+        if ig == 0:
+            return Node(value= y[0])  
         left = self._grow_tree(X[l],y[l],depth+1)
         right = self._grow_tree(X[r],y[r],depth+1)
         #left = self._grow_tree(np.delete(X[l].T, feat, 0).T,y[l],depth+1) ## co przekazujemy ???
@@ -44,18 +44,18 @@ class DecisionTree:
         max_left = None
         max_right = None
         for feat in feat_idxs:
-            if X.T[feat][0] is not None:
-                for val in X.T[feat]:
-                    ig,left,right =  self._information_gain(y,X.T[feat],val)
-                    if ig > max_gain:
-                        max_gain = ig
-                        max_thresh = val
-                        max_feat = feat
-                        max_left = left
-                        max_right = right
+            vals = np.unique(X.T[feat])
+            vals = np.array([(vals[i]+vals[i+1])/2  for i in range(len(vals)-1)])
+            for val in vals:
+                ig,left,right =  self._information_gain(y,X.T[feat],val)
+                if ig >= max_gain:
+                    max_gain = ig
+                    max_thresh = val
+                    max_feat = feat
+                    max_left = left
+                    max_right = right
 
-      
-        return max_thresh,max_feat,max_left,max_right
+        return max_thresh,max_feat,max_left,max_right,max_gain
      
         # szukamy najlepszego podzialu, wykorzystamy funkcje _information_gain
         #wybierzemy taki feature(petal_width itp.) dla którego zwroci najwieksza wartosc
@@ -91,8 +91,7 @@ class DecisionTree:
 
     def predict(self,X):
         return np.array([self._traverse_tree(x,self.root) for x in X])
-
-
+    
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
 
@@ -107,4 +106,3 @@ def accuracy(y_test,y_pred):
     return np.sum(y_test == y_pred) / len(y_test)
 
 acc = accuracy(y_test,predictions)
-print(acc)
