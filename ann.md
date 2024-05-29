@@ -39,3 +39,4 @@ ax.set_xlim(0, len(perLayer))
 ax.set_ylim(0, max(perLayer))
 plt.show()
 ```
+![image](https://github.com/matbielak/wstep_do_systemow_sztucznej_inteligencji/assets/100089973/19161bb6-27e6-42c2-a65b-43b9fbd02cf8)
