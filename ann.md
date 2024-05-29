@@ -1,4 +1,21 @@
 ### Creating ANN
+```python
+def createANN(n_layers, per_layer,input):
+  neurons = []
+  neurons.append([Neuron(0,value=input[i]) for i in range(per_layer[0])])
+  for i in range(1,n_layers):
+    neurons.append([Neuron(per_layer[i-1]) for _ in range(per_layer[i])])
+  
+  for i in range(1,n_layers):
+    xs = [i.value for i in neurons[i-1]] 
+    for j in range(per_layer[i]):
+      value = neurons[i][j].__call__(xs)
+
+
+# output - wartosc neuronu z ostatniej layer
+  return value
+```
+
 
 
 ### Visualising ANN
